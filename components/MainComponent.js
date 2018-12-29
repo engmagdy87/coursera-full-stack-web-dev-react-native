@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Menu from "./MenuComponent";
-import { DISHES } from "../shared/dishes";
 import Dishdetail from "./DishdetailComponent";
 import { View, Platform } from "react-native";
 import {
@@ -10,6 +9,8 @@ import {
 } from "react-navigation";
 import { Icon } from "react-native-elements";
 import Home from "./HomeComponent";
+import About from "./AboutComponent";
+import Contact from "./ContactComponent";
 
 const MenuNavigator = createStackNavigator(
   {
@@ -35,7 +36,7 @@ const HomeNavigator = createStackNavigator(
     Home: { screen: Home }
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: "#512DA8"
       },
@@ -43,7 +44,41 @@ const HomeNavigator = createStackNavigator(
         color: "#fff"
       },
       headerTintColor: "#fff"
-    })
+    }
+  }
+);
+
+const AboutNavigator = createStackNavigator(
+  {
+    AboutUs: { screen: About }
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#512DA8"
+      },
+      headerTitleStyle: {
+        color: "#fff"
+      },
+      headerTintColor: "#fff"
+    }
+  }
+);
+
+const ContactNavigator = createStackNavigator(
+  {
+    ContactUs: { screen: Contact }
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#512DA8"
+      },
+      headerTitleStyle: {
+        color: "#fff"
+      },
+      headerTintColor: "#fff"
+    }
   }
 );
 
@@ -56,11 +91,25 @@ const MainNavigator = createDrawerNavigator(
         drawerLabel: "Home"
       }
     },
+    "About Us": {
+      screen: AboutNavigator,
+      defaultNavigationOptions: {
+        title: "About Us",
+        drawerLabel: "About Us"
+      }
+    },
     Menu: {
       screen: MenuNavigator,
       defaultNavigationOptions: {
         title: "Menu",
         drawerLabel: "Menu"
+      }
+    },
+    "Contact Us": {
+      screen: ContactNavigator,
+      defaultNavigationOptions: {
+        title: "Contact Us",
+        drawerLabel: "Contact Us"
       }
     }
   },
