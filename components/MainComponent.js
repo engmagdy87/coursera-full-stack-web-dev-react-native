@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import Menu from "./MenuComponent";
 import Dishdetail from "./DishdetailComponent";
 import { View, Platform } from "react-native";
-import {
-  createStackNavigator,
-  createAppContainer,
-  createDrawerNavigator
-} from "react-navigation";
+import { createStackNavigator, createDrawerNavigator } from "react-navigation";
 import { Icon } from "react-native-elements";
 import Home from "./HomeComponent";
 import About from "./AboutComponent";
@@ -19,7 +15,7 @@ const MenuNavigator = createStackNavigator(
   },
   {
     initialRouteName: "Menu",
-    defaultNavigationOptions: {
+    navigationOptions: {
       headerStyle: {
         backgroundColor: "#512DA8"
       },
@@ -36,7 +32,7 @@ const HomeNavigator = createStackNavigator(
     Home: { screen: Home }
   },
   {
-    defaultNavigationOptions: {
+    navigationOptions: {
       headerStyle: {
         backgroundColor: "#512DA8"
       },
@@ -53,7 +49,7 @@ const AboutNavigator = createStackNavigator(
     AboutUs: { screen: About }
   },
   {
-    defaultNavigationOptions: {
+    navigationOptions: {
       headerStyle: {
         backgroundColor: "#512DA8"
       },
@@ -70,7 +66,7 @@ const ContactNavigator = createStackNavigator(
     ContactUs: { screen: Contact }
   },
   {
-    defaultNavigationOptions: {
+    navigationOptions: {
       headerStyle: {
         backgroundColor: "#512DA8"
       },
@@ -86,28 +82,28 @@ const MainNavigator = createDrawerNavigator(
   {
     Home: {
       screen: HomeNavigator,
-      defaultNavigationOptions: {
+      navigationOptions: {
         title: "Home",
         drawerLabel: "Home"
       }
     },
     "About Us": {
       screen: AboutNavigator,
-      defaultNavigationOptions: {
+      navigationOptions: {
         title: "About Us",
         drawerLabel: "About Us"
       }
     },
     Menu: {
       screen: MenuNavigator,
-      defaultNavigationOptions: {
+      navigationOptions: {
         title: "Menu",
         drawerLabel: "Menu"
       }
     },
     "Contact Us": {
       screen: ContactNavigator,
-      defaultNavigationOptions: {
+      navigationOptions: {
         title: "Contact Us",
         drawerLabel: "Contact Us"
       }
@@ -118,8 +114,6 @@ const MainNavigator = createDrawerNavigator(
   }
 );
 
-const AppContainer = createAppContainer(MainNavigator);
-
 class Main extends Component {
   render() {
     return (
@@ -129,7 +123,7 @@ class Main extends Component {
           paddingTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight
         }}
       >
-        <AppContainer />
+        <MainNavigator />
       </View>
     );
   }
